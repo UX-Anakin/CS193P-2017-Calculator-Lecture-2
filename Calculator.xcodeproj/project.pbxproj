@@ -54,14 +54,22 @@
 		EA6290C41E5663C200C6E439 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				EA6290C51E5663C200C6E439 /* AppDelegate.swift */,
+				EA6290D71E56641700C6E439 /* Supporting Files */,
 				EA6290C71E5663C200C6E439 /* ViewController.swift */,
 				EA6290C91E5663C200C6E439 /* Main.storyboard */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		EA6290D71E56641700C6E439 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA6290C51E5663C200C6E439 /* AppDelegate.swift */,
 				EA6290CC1E5663C200C6E439 /* Assets.xcassets */,
 				EA6290CE1E5663C200C6E439 /* LaunchScreen.storyboard */,
 				EA6290D11E5663C200C6E439 /* Info.plist */,
 			);
-			path = Calculator;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +275,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = DeimanTechnology.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -280,6 +289,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = DeimanTechnology.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
