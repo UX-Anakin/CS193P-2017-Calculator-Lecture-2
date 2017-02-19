@@ -12,24 +12,26 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
     var displayValue: Double {
-        get {
-            return Double(display.text!)!
+        get {   return Double(display.text!)!
         }
-        set {
-            display.text = String(newValue)
+        set {   display.text = String(newValue)
         }
     }
     
     var userIsInTheMiddleOfTyping = false
     
+    private var brain = CalculatorBrain()
+    
     @IBAction func performOperation(_ sender: UIButton) {
-        userIsInTheMiddleOfTyping = false
+        if userIsInTheMiddleOfTyping {
+            brain.setOperand(displayValue)
+            userIsInTheMiddleOfTyping = false
+        }
         if let mathematicalSymbol = sender.currentTitle {
-            switch mathematicalSymbol {
-            case "π": displayValue = Double.pi
-            case "√": displayValue = sqrt(displayValue)
-            default: break
-            }
+            brain.performOperation(mathematicalSymbol)
+        }
+        if let result = brain.result {
+            displayValue = result
         }
     }
     
