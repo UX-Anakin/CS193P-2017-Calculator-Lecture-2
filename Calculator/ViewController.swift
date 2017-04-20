@@ -8,18 +8,48 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+extension UIUserInterfaceSizeClass: CustomStringConvertible {
+	public var description: String {
+		switch self {
+		case .compact: return "compact"
+		case .regular: return "regular"
+		default: return "unspecified"
+		}
+	}
+}
 
-    @IBOutlet weak var display: UILabel!
-    var displayValue: Double {
-        get {   return Double(display.text!)!
-        }
-        set {   display.text = String(newValue)
-        }
-    }
-    
-    var userIsInTheMiddleOfTyping = false
-    
+
+class ViewController: UIViewController {
+	
+	@IBOutlet weak var display: UILabel!
+	var displayValue: Double {
+		get {   return Double(display.text!)!
+		}
+		set {   display.text = String(newValue)
+		}
+	}
+	
+	var userIsInTheMiddleOfTyping = false
+	
+	private func showSizeClasses() -> String {
+		let horizontalDescription = traitCollection.horizontalSizeClass.description
+		let verticalDescription = traitCollection.verticalSizeClass.description
+		return ("Width: \(horizontalDescription)  height: \(verticalDescription)")
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		print(showSizeClasses())
+	}
+	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		coordinator.animate(alongsideTransition: { (coordinator) in
+			print(self.showSizeClasses())
+		}, completion: nil)
+		//		print(showSizeClasses())
+	}
+	
     private var brain = CalculatorBrain()
     
     @IBAction func performOperation(_ sender: UIButton) {
